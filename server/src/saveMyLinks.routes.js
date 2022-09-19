@@ -5,7 +5,7 @@ const { PrismaClient } = require('@prisma/client')
 
 const prisma = new PrismaClient()
 
-//Create
+//Create (rota responsável por criar um novo link)
 saveMyLinksRoutes.post('/links', async (req, res) => {
   const { url } = req.body
   const { title } = req.body
@@ -15,11 +15,10 @@ saveMyLinksRoutes.post('/links', async (req, res) => {
       title
     }
   })
-  //allLinks.push({ link, title })
   return res.status(201).json(link)
 })
 
-//Read
+//Read (rota responsável por retornar os dados da API em JSON)
 saveMyLinksRoutes.get('/links', (req, res) => {
   return res.status(200).json(allLinks)
 })
