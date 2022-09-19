@@ -1,14 +1,22 @@
 const express = require('express')
-
 const allLinks = [{ link: 'teste1.com', title: 'title test 1' }]
 const saveMyLinksRoutes = express.Router()
+const { PrismaClient } = require('@prisma/client')
+
+const prisma = new PrismaClient()
 
 //Create
-saveMyLinksRoutes.post('/links', (req, res) => {
-  const { link } = req.body
+saveMyLinksRoutes.post('/links', async (req, res) => {
+  const { url } = req.body
   const { title } = req.body
-  allLinks.push({ link, title })
-  return res.status(201).json(allLinks)
+  const link = await prisma.link.create({
+    data: {
+      url,
+      title
+    }
+  })
+  //allLinks.push({ link, title })
+  return res.status(201).json(link)
 })
 
 //Read
