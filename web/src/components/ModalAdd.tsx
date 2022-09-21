@@ -21,7 +21,7 @@ const style = {
   alignItems: 'center'
 }
 
-export function ModalAdd() {
+export const ModalAdd = () => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
