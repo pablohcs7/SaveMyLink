@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import { useState } from 'react'
 import { TextField, Tooltip } from '@mui/material'
+import EditIcon from '@mui/icons-material/Edit'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -21,16 +22,16 @@ const style = {
   alignItems: 'center'
 }
 
-export const ModalAdd = () => {
+export const ModalUpdate = () => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
   return (
     <div>
-      <Tooltip title="Novo link">
-        <Button variant="contained" onClick={handleOpen} size="medium">
-          + LINK
+      <Tooltip title="Editar">
+        <Button onClick={handleOpen} size="medium">
+          <EditIcon />
         </Button>
       </Tooltip>
 
@@ -47,7 +48,7 @@ export const ModalAdd = () => {
             component="h2"
             sx={{ mb: '1rem' }}
           >
-            Inserir novo link
+            Editar link
           </Typography>
           <Box
             sx={{
@@ -74,7 +75,7 @@ export const ModalAdd = () => {
             />
           </Box>
           <Button variant="contained" onClick={handleClose} size="medium">
-            Adicionar
+            Editar
           </Button>
         </Box>
       </Modal>

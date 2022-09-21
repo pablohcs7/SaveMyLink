@@ -86,9 +86,7 @@ export const App = () => {
               }}
             >
               <Typography variant="h4">Meus Links</Typography>
-              <Tooltip title="Editar">
-                <ModalAdd />
-              </Tooltip>
+              <ModalAdd />
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <LinksList links={links} />

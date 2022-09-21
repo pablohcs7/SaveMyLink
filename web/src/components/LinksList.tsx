@@ -10,6 +10,7 @@ import {
 
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
+import { ModalUpdate } from './ModalUpdate'
 
 interface LinksListProps {}
 
@@ -32,11 +33,7 @@ export const LinksList = ({ links }: any) => {
 
           <Box>
             <CardActions>
-              <Tooltip title="Editar">
-                <Button>
-                  <EditIcon />
-                </Button>
-              </Tooltip>
+              <ModalUpdate />
               <Tooltip title="Excluir">
                 <Button>
                   <DeleteIcon />
