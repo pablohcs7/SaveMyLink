@@ -8,9 +8,9 @@ import {
   Typography
 } from '@mui/material'
 
-import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { ModalUpdate } from './ModalUpdate'
+import { ModalDelete } from './ModalDelete'
 
 interface LinksListProps {}
 
@@ -34,11 +34,7 @@ export const LinksList = ({ links }: any) => {
           <Box>
             <CardActions>
               <ModalUpdate />
-              <Tooltip title="Excluir">
-                <Button>
-                  <DeleteIcon />
-                </Button>
-              </Tooltip>
+              <ModalDelete />
             </CardActions>
           </Box>
         </Card>

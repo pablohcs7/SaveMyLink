@@ -4,7 +4,8 @@ import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import { useState } from 'react'
 import { TextField, Tooltip } from '@mui/material'
-import EditIcon from '@mui/icons-material/Edit'
+
+import DeleteIcon from '@mui/icons-material/Delete'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -22,16 +23,16 @@ const style = {
   alignItems: 'center'
 }
 
-export const ModalUpdate = () => {
+export const ModalDelete = () => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
   return (
     <div>
-      <Tooltip title="Editar">
+      <Tooltip title="Excluir">
         <Button onClick={handleOpen}>
-          <EditIcon />
+          <DeleteIcon />
         </Button>
       </Tooltip>
 
@@ -48,35 +49,22 @@ export const ModalUpdate = () => {
             component="h2"
             sx={{ mb: '1rem' }}
           >
-            Editar link
+            Tem certeza que deseja excluir?
           </Typography>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '1rem'
-            }}
-          >
-            <TextField
-              id="outlined-basic"
-              size="small"
-              label="Título"
-              variant="outlined"
-              helperText="Insira o título"
-            />
 
-            <TextField
-              id="outlined-basic"
-              size="small"
-              label="URL"
-              variant="outlined"
-              helperText="Insira a URL"
-            />
+          <Box sx={{ display: 'flex', gap: '1rem' }}>
+            <Button variant="contained" onClick={handleClose} size="medium">
+              Sim
+            </Button>
+            <Button
+              variant="contained"
+              color="error"
+              onClick={handleClose}
+              size="medium"
+            >
+              Não
+            </Button>
           </Box>
-          <Button variant="contained" onClick={handleClose} size="medium">
-            Editar
-          </Button>
         </Box>
       </Modal>
     </div>
