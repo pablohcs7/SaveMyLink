@@ -1,8 +1,22 @@
-import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material'
+import {
+  AppBar,
+  Box,
+  Container,
+  Divider,
+  Toolbar,
+  Typography
+} from '@mui/material'
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { LinksList } from './components/LinksList'
+
+/*interface LinksProps {
+  id: number
+  url: string
+  title: string
+}*/
 
 export const App = () => {
   const [links, setLinks] = useState([])
@@ -23,10 +37,10 @@ export const App = () => {
 
   return (
     <>
-      <Box sx={{ backgroundColor: '#e6e6e6', height: '100vh' }}>
+      <Box sx={{ backgroundColor: '#e6e6e6', height: '100vh', width: '100vw' }}>
         {/* HEADER */}
-        <Box sx={{ flexGrow: 1, mb: '1rem' }}>
-          <AppBar position="static">
+        <Box sx={{ flexGrow: 1, mb: '2.5rem' }}>
+          <AppBar position="static" sx={{ backgroundColor: 'darkorange' }}>
             <Toolbar>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 SaveMyLink
@@ -39,17 +53,28 @@ export const App = () => {
         </Box>
 
         {/* CONTENT */}
-        <Container maxWidth="sm">
+        <Container maxWidth="md">
           <Box
             sx={{
               display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              width: '100%'
             }}
           >
-            <Typography variant="h3" sx={{ mb: '1rem' }}>
-              Bem vindo!
+            <Typography variant="h4" sx={{ mb: '1rem' }}>
+              Bem vindo ao SaveMyLink!
             </Typography>
+            <Typography sx={{ mb: '2rem' }}>
+              Salve seus links de forma prática e segura!
+            </Typography>
+            <Divider sx={{ width: '100%' }} />
+          </Box>
+
+          <Box>
+            <Typography variant="h5">Meus Links</Typography>
+            <LinksList links={links} />
           </Box>
         </Container>
       </Box>
