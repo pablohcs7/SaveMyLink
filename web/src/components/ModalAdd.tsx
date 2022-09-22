@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import { useState } from 'react'
 import { TextField, Tooltip } from '@mui/material'
+import axios from 'axios'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -21,10 +22,24 @@ const style = {
   alignItems: 'center'
 }
 
-export const ModalAdd = () => {
+export const ModalAdd = ({ get }: any) => {
+  const [titleInputValue, setTitleInputValue] = useState('')
+  const [urlInputValue, setUrlInputValue] = useState('')
+
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  async function createLink() {
+    const response = await axios.post('http://localhost:3333/links', {
+      url: urlInputValue,
+      title: titleInputValue
+    })
+    get()
+    setTitleInputValue('')
+    setUrlInputValue('')
+    handleClose()
+  }
 
   return (
     <div>
@@ -63,6 +78,9 @@ export const ModalAdd = () => {
               label="Título"
               variant="outlined"
               helperText="Insira o título"
+              onChange={(event) => {
+                setTitleInputValue(event.target.value)
+              }}
             />
 
             <TextField
@@ -71,9 +89,21 @@ export const ModalAdd = () => {
               label="URL"
               variant="outlined"
               helperText="Insira a URL"
+              onChange={(event) => {
+                setUrlInputValue(event.target.value)
+              }}
             />
           </Box>
-          <Button variant="contained" onClick={handleClose} size="medium">
+          <Button
+            variant="contained"
+            onClick={() => {
+              createLink()
+            }}
+            disabled={
+              urlInputValue == '' || titleInputValue == '' ? true : false
+            }
+            size="medium"
+          >
             Adicionar
           </Button>
         </Box>

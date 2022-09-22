@@ -1,11 +1,9 @@
 import {
   AppBar,
   Box,
-  Button,
   Container,
   Divider,
   Toolbar,
-  Tooltip,
   Typography
 } from '@mui/material'
 
@@ -30,7 +28,7 @@ export const App = () => {
   }, [])
 
   //GET da API que retorna um array de links salvos
-  const getLinks = async () => {
+  async function getLinks() {
     const endpoint = 'http://localhost:3333/links'
 
     const response = await axios.get(endpoint)
@@ -38,9 +36,13 @@ export const App = () => {
     console.log(links)
   }
 
+  //const getLinks = async () => {
+
+  //}
+
   return (
     <>
-      <Box sx={{ backgroundColor: '#e6e6e6', height: '100vh', width: '100vw' }}>
+      <Box sx={{ backgroundColor: '#e6e6e6', height: '100%', width: '100%' }}>
         {/* HEADER */}
         <Box sx={{ flexGrow: 1, mb: '2.5rem' }}>
           <AppBar position="static" sx={{ backgroundColor: 'darkorange' }}>
@@ -86,7 +88,7 @@ export const App = () => {
               }}
             >
               <Typography variant="h4">Meus Links</Typography>
-              <ModalAdd />
+              <ModalAdd get={() => getLinks()} />
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <LinksList links={links} />
