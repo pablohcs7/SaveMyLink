@@ -3,9 +3,10 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import { useState } from 'react'
-import { TextField, Tooltip } from '@mui/material'
+import { Tooltip } from '@mui/material'
 
 import DeleteIcon from '@mui/icons-material/Delete'
+import axios from 'axios'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -23,10 +24,19 @@ const style = {
   alignItems: 'center'
 }
 
-export const ModalDelete = () => {
+export const ModalDelete = ({ get, id }: any) => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  //console.log(get)
+
+  async function deleteLink(deleteId: any) {
+    //console.log(deleteId)
+    await axios.delete(`http://localhost:3333/links/${deleteId}`)
+    get()
+    handleClose()
+  }
 
   return (
     <div>
@@ -53,7 +63,13 @@ export const ModalDelete = () => {
           </Typography>
 
           <Box sx={{ display: 'flex', gap: '1rem' }}>
-            <Button variant="contained" onClick={handleClose} size="medium">
+            <Button
+              variant="contained"
+              onClick={() => {
+                deleteLink(id)
+              }}
+              size="medium"
+            >
               Sim
             </Button>
             <Button

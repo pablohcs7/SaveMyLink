@@ -33,16 +33,14 @@ export const App = () => {
 
     const response = await axios.get(endpoint)
     setLinks(response.data)
-    console.log(links)
+    console.log(response.data)
   }
-
-  //const getLinks = async () => {
-
-  //}
 
   return (
     <>
-      <Box sx={{ backgroundColor: '#e6e6e6', height: '100%', width: '100%' }}>
+      <Box
+        sx={{ backgroundColor: '#e6e6e6', minHeight: '100vh', width: '100%' }}
+      >
         {/* HEADER */}
         <Box sx={{ flexGrow: 1, mb: '2.5rem' }}>
           <AppBar position="static" sx={{ backgroundColor: 'darkorange' }}>
@@ -65,7 +63,7 @@ export const App = () => {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              width: '100%'
+              Width: '100%'
             }}
           >
             <Typography variant="h3" sx={{ mb: '1rem', textAlign: 'center' }}>
@@ -91,7 +89,7 @@ export const App = () => {
               <ModalAdd get={() => getLinks()} />
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <LinksList links={links} />
+              <LinksList links={links} get={() => getLinks()} />
             </Box>
           </Box>
         </Container>
