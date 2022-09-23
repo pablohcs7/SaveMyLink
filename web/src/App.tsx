@@ -108,7 +108,8 @@ export const App = () => {
             justifyContent: 'center',
             height: '3rem',
             backgroundColor: 'darkorange',
-            alignItems: 'center'
+            alignItems: 'center',
+            boxShadow: '0px -1px 6px 0px rgba(0,0,0,0.4)'
           }}
         >
           <Typography variant="body2">
