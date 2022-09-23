@@ -15,7 +15,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  border: '1px solid #000',
   boxShadow: 24,
   p: 4,
   display: 'flex',
@@ -29,10 +29,8 @@ export const ModalDelete = ({ get, id }: any) => {
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  //console.log(get)
-
+  //Função responsável por fazer a exclusão do link
   async function deleteLink(deleteId: any) {
-    //console.log(deleteId)
     await axios.delete(`http://localhost:3333/links/${deleteId}`)
     get()
     handleClose()

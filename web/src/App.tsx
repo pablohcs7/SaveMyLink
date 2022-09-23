@@ -13,12 +13,6 @@ import { useEffect, useState } from 'react'
 import { LinksList } from './components/LinksList'
 import { ModalAdd } from './components/ModalAdd'
 
-/*interface LinksProps {
-  id: number
-  url: string
-  title: string
-}*/
-
 export const App = () => {
   const [links, setLinks] = useState([])
 
@@ -33,7 +27,6 @@ export const App = () => {
 
     const response = await axios.get(endpoint)
     setLinks(response.data)
-    //console.log(response.data)
   }
 
   return (

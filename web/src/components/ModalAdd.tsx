@@ -13,7 +13,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  border: '1px solid #000',
   boxShadow: 24,
   p: 4,
   display: 'flex',
@@ -30,6 +30,7 @@ export const ModalAdd = ({ get }: any) => {
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
+  //Função responsável por adicionar um novo link na API
   async function createLink() {
     const response = await axios.post('http://localhost:3333/links', {
       url: urlInputValue,

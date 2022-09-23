@@ -5,6 +5,7 @@ import { ModalDelete } from './ModalDelete'
 
 interface LinksListProps {}
 
+//Componente responsável por mapear o array de links e exibir os cards na tela
 export const LinksList = ({ links, get }: any) => {
   return (
     <>

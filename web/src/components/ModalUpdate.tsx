@@ -14,7 +14,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  border: '1px solid #000',
   boxShadow: 24,
   p: 4,
   display: 'flex',
@@ -31,6 +31,7 @@ export const ModalUpdate = ({ link, get }: any) => {
   const [titleInputValue, setTitleInputValue] = useState('')
   const [urlInputValue, setUrlInputValue] = useState('')
 
+  //Função verifica os valores passados para o update e envia a requisição para a API
   async function updateLink(urlEdited: any, titleEdited: any) {
     if (urlEdited == '') {
       urlEdited = link.url
@@ -49,8 +50,6 @@ export const ModalUpdate = ({ link, get }: any) => {
         setTitleInputValue('')
         setUrlInputValue('')
         handleClose()
-        console.log('url dentro do update ' + urlInputValue)
-        console.log('titulo dentro do update ' + titleInputValue)
       })
   }
 
