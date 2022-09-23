@@ -55,7 +55,7 @@ export const ModalUpdate = ({ link, get }: any) => {
 
   return (
     <div>
-      <Tooltip title="Editar">
+      <Tooltip title="Editar" arrow>
         <Button onClick={handleOpen}>
           <EditIcon />
         </Button>

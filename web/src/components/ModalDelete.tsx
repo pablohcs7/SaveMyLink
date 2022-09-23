@@ -38,7 +38,7 @@ export const ModalDelete = ({ get, id }: any) => {
 
   return (
     <div>
-      <Tooltip title="Excluir">
+      <Tooltip title="Excluir" arrow>
         <Button onClick={handleOpen}>
           <DeleteIcon />
         </Button>

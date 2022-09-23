@@ -44,7 +44,7 @@ export const ModalAdd = ({ get }: any) => {
 
   return (
     <div>
-      <Tooltip title="Novo link">
+      <Tooltip title="Novo link" arrow>
         <Button variant="contained" onClick={handleOpen} size="medium">
           + LINK
         </Button>

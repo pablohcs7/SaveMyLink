@@ -1,4 +1,14 @@
-import { Box, Card, CardActions, CardContent, Typography } from '@mui/material'
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Tooltip,
+  Typography
+} from '@mui/material'
+
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 
 import { ModalUpdate } from './ModalUpdate'
 import { ModalDelete } from './ModalDelete'
@@ -22,8 +32,29 @@ export const LinksList = ({ links, get }: any) => {
           >
             <CardContent>
               <Typography sx={{ fontSize: '1.2rem' }}>{link.title}</Typography>
-              <Typography variant="body2" sx={{ wordBreak: 'break-all' }}>
+              <Typography
+                variant="body2"
+                className="url"
+                sx={{ wordBreak: 'break-all' }}
+              >
                 {link.url}
+                <span>
+                  <Tooltip title="Copiar" arrow>
+                    <Button
+                      sx={{
+                        height: '1rem',
+                        minWidth: '0rem',
+                        width: '0',
+                        fontSize: '0.5rem',
+                        ml: '0.2rem'
+                      }}
+                      onClick={() => navigator.clipboard.writeText(link.url)}
+                      variant="text"
+                    >
+                      <ContentCopyIcon sx={{ height: '1rem' }} />
+                    </Button>
+                  </Tooltip>
+                </span>
               </Typography>
             </CardContent>
 
