@@ -39,24 +39,32 @@ export const App = () => {
   return (
     <>
       <Box
-        sx={{ backgroundColor: '#e6e6e6', minHeight: '100vh', width: '100%' }}
+        sx={{
+          backgroundColor: '#e6e6e6',
+          minHeight: '100vh',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column'
+        }}
       >
         {/* HEADER */}
-        <Box sx={{ flexGrow: 1, mb: '2.5rem' }}>
-          <AppBar position="static" sx={{ backgroundColor: 'darkorange' }}>
-            <Toolbar>
-              <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-                SaveMyLink
-              </Typography>
-              <Typography>
-                <AccountCircleIcon />
-              </Typography>
-            </Toolbar>
-          </AppBar>
+        <Box>
+          <Box sx={{ flexGrow: 1, mb: '2.5rem' }}>
+            <AppBar position="static" sx={{ backgroundColor: 'darkorange' }}>
+              <Toolbar>
+                <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+                  SaveMyLink
+                </Typography>
+                <Typography>
+                  <AccountCircleIcon />
+                </Typography>
+              </Toolbar>
+            </AppBar>
+          </Box>
         </Box>
 
         {/* CONTENT */}
-        <Container maxWidth="md">
+        <Container maxWidth="md" sx={{ flex: '1 0 auto', mb: '2rem' }}>
           <Box
             sx={{
               display: 'flex',
@@ -88,11 +96,35 @@ export const App = () => {
               <Typography variant="h4">Meus Links</Typography>
               <ModalAdd get={() => getLinks()} />
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column-reverse',
+                gap: '1rem'
+              }}
+            >
               <LinksList links={links} get={() => getLinks()} />
             </Box>
           </Box>
         </Container>
+        {/*FOOTER */}
+        <Box
+          sx={{
+            flexShrink: 0,
+            display: 'flex',
+            justifyContent: 'center',
+            height: '3rem',
+            backgroundColor: 'darkorange',
+            alignItems: 'center'
+          }}
+        >
+          <Typography variant="body2">
+            Feito com ♥ por{' '}
+            <a target="_blank" href="https://github.com/pablohcs7">
+              Pablo
+            </a>
+          </Typography>
+        </Box>
       </Box>
     </>
   )
