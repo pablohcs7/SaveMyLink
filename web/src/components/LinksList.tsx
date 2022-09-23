@@ -6,12 +6,12 @@ import { ModalDelete } from './ModalDelete'
 interface LinksListProps {}
 
 export const LinksList = ({ links, get }: any) => {
-  //console.log(get)
   return (
     <>
       {links.map((link: any) => {
         return (
           <Card
+            key={link.id}
             sx={{
               maxWidth: '100%',
               display: 'flex',
@@ -28,7 +28,7 @@ export const LinksList = ({ links, get }: any) => {
 
             <Box>
               <CardActions>
-                <ModalUpdate />
+                <ModalUpdate get={() => get()} link={link} />
                 <ModalDelete get={() => get()} id={link.id} />
               </CardActions>
             </Box>

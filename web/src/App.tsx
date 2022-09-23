@@ -33,7 +33,7 @@ export const App = () => {
 
     const response = await axios.get(endpoint)
     setLinks(response.data)
-    console.log(response.data)
+    //console.log(response.data)
   }
 
   return (

@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal'
 import { useState } from 'react'
 import { TextField, Tooltip } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
+import axios from 'axios'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -22,10 +23,36 @@ const style = {
   alignItems: 'center'
 }
 
-export const ModalUpdate = () => {
+export const ModalUpdate = ({ link, get }: any) => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  const [titleInputValue, setTitleInputValue] = useState('')
+  const [urlInputValue, setUrlInputValue] = useState('')
+
+  async function updateLink(urlEdited: any, titleEdited: any) {
+    if (urlEdited == '') {
+      urlEdited = link.url
+    }
+    if (titleEdited == '') {
+      titleEdited = link.title
+    }
+    const response = await axios
+      .put('http://localhost:3333/links', {
+        id: link.id,
+        url: urlEdited,
+        title: titleEdited
+      })
+      .then(() => {
+        get()
+        setTitleInputValue('')
+        setUrlInputValue('')
+        handleClose()
+        console.log('url dentro do update ' + urlInputValue)
+        console.log('titulo dentro do update ' + titleInputValue)
+      })
+  }
 
   return (
     <div>
@@ -64,6 +91,9 @@ export const ModalUpdate = () => {
               label="Título"
               variant="outlined"
               helperText="Insira o título"
+              onChange={(event) => {
+                setTitleInputValue(event.target.value)
+              }}
             />
 
             <TextField
@@ -72,9 +102,19 @@ export const ModalUpdate = () => {
               label="URL"
               variant="outlined"
               helperText="Insira a URL"
+              onChange={(event) => {
+                setUrlInputValue(event.target.value)
+              }}
             />
           </Box>
-          <Button variant="contained" onClick={handleClose} size="medium">
+          <Button
+            variant="contained"
+            disabled={
+              urlInputValue == '' && titleInputValue == '' ? true : false
+            }
+            onClick={() => updateLink(urlInputValue, titleInputValue)}
+            size="medium"
+          >
             Editar
           </Button>
         </Box>
