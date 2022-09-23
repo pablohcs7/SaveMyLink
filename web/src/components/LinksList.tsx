@@ -9,9 +9,7 @@ export const LinksList = ({ links, get }: any) => {
   //console.log(get)
   return (
     <>
-      {links.map((link: any, reload: any) => {
-        reload = get
-        //console.log(reload)
+      {links.map((link: any) => {
         return (
           <Card
             sx={{
