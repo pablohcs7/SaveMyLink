@@ -23,7 +23,7 @@ export const App = () => {
 
   //GET da API que retorna um array de links salvos
   async function getLinks() {
-    const endpoint = 'http://localhost:3333/links'
+    const endpoint = `${import.meta.env.VITE_API_URL}/links`
 
     const response = await axios.get(endpoint)
     setLinks(response.data)

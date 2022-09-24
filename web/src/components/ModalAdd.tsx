@@ -32,7 +32,7 @@ export const ModalAdd = ({ get }: any) => {
 
   //Função responsável por adicionar um novo link na API
   async function createLink() {
-    const response = await axios.post('http://localhost:3333/links', {
+    const response = await axios.post(`${import.meta.env.VITE_API_URL}/links`, {
       url: urlInputValue,
       title: titleInputValue
     })

@@ -40,7 +40,7 @@ export const ModalUpdate = ({ link, get }: any) => {
       titleEdited = link.title
     }
     const response = await axios
-      .put('http://localhost:3333/links', {
+      .put(`${import.meta.env.VITE_API_URL}/links`, {
         id: link.id,
         url: urlEdited,
         title: titleEdited
