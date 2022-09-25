@@ -1,6 +1,6 @@
 # SaveMyLink
 
-O projeto foi construído com base no desafio da Devnology onde foi proposto que fosse feito um sistema para salvar e manipular links de artigos de tecnologia. A interface foi construída da perspectiva do usuário "logado" no sistema onde ele pode visualizar, editar e excluir seus links salvos e também adicionar novos links. O deploy do front-end está rodando na Vercel e o back-end na plataforma Heroku em conjunto com o banco de dados.
+O projeto foi construído com base no desafio da Devnology onde foi proposto que fosse feito um sistema para salvar e manipular links de artigos de tecnologia. A interface foi construída da perspectiva do usuário "logado" no sistema, onde ele pode visualizar, editar e excluir seus links salvos e também adicionar novos links. O deploy do front-end está rodando na Vercel e o back-end na plataforma Heroku em conjunto com o banco de dados.
 
 Para acessar o projeto basta clicar <a href="https://save-my-link-web.vercel.app/">aqui</a>.
 
